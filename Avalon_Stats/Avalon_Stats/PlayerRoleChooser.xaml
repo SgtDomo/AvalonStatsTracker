@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Avalon_Stats.PlayerRoleChooser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Avalon_Stats"
+             mc:Ignorable="d"
+             Name="PlayerRoleChooserRoot"
+             >
+        <StackPanel Orientation="Horizontal">
+        <Label VerticalContentAlignment="Center">Spieler-Name:</Label>
+        <ComboBox IsEditable="False" SelectedItem="{Binding SelectedPlayer, ElementName=PlayerRoleChooserRoot, Mode=TwoWay}" ItemsSource="{Binding Players, ElementName=PlayerRoleChooserRoot}" DisplayMemberPath="PlayerName" Width="150"  VerticalContentAlignment="Center" Height="30"></ComboBox>
+            <Label VerticalContentAlignment="Center">Rollen-Name</Label>
+        <ComboBox Name="test" IsEditable="False" SelectedItem="{Binding SelectedRole, ElementName=PlayerRoleChooserRoot, Mode=TwoWay}"
+                      ItemsSource="{Binding Roles, ElementName=PlayerRoleChooserRoot}" DisplayMemberPath="FullName"  Width="150" VerticalContentAlignment="Center" Height="30"></ComboBox>
+        </StackPanel>
+</UserControl>

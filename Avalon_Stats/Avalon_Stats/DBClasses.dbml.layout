@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DBClasses">
+  <DataContextMoniker Name="/DBClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a909dc0c-5d48-4b8a-9768-1311ccb49140" absoluteBounds="0.5, 1.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DBClassesDataContext/GameView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea44f262-06b9-4302-9b9c-69bc7c6591e8" absoluteBounds="0.51500000000000012, 1.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="300980b4-a31f-48b2-b901-70349ceb804e" absoluteBounds="6.375, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DBClassesDataContext/GameRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba26cd19-668b-4ca6-8a67-b0e1d1580d9a" absoluteBounds="6.39, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fdd202ba-c94c-4492-b1be-ce1c10d8d0ec" absoluteBounds="3.875, 1.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DBClassesDataContext/Participation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="86348829-aa1d-47e0-a648-6fa433e9d5c7" absoluteBounds="3.8899999999999997, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="21a5e8bb-b5b2-4c76-94b9-cecf4e499bf4" absoluteBounds="4.25, 3.375, 2, 1.0016910807291666">
+      <DataClassMoniker Name="/DBClassesDataContext/Player" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fb351f25-ac5e-46b9-b2fd-19a830f8f341" absoluteBounds="4.265, 3.835, 1.9700000000000002, 0.44169108072916663" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 2.31814697265625); (3.875 : 2.31814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBClassesDataContext/GameView/GameView_Participation" />
+      <nodes>
+        <classShapeMoniker Id="a909dc0c-5d48-4b8a-9768-1311ccb49140" />
+        <classShapeMoniker Id="fdd202ba-c94c-4492-b1be-ce1c10d8d0ec" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.25 : 3.80370198567708); (2.5 : 3.80370198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBClassesDataContext/Player/Player_GameView" />
+      <nodes>
+        <classShapeMoniker Id="21a5e8bb-b5b2-4c76-94b9-cecf4e499bf4" />
+        <classShapeMoniker Id="a909dc0c-5d48-4b8a-9768-1311ccb49140" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.375 : 1.88064697265625); (5.875 : 1.88064697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBClassesDataContext/GameRole/GameRole_Participation" />
+      <nodes>
+        <classShapeMoniker Id="300980b4-a31f-48b2-b901-70349ceb804e" />
+        <classShapeMoniker Id="fdd202ba-c94c-4492-b1be-ce1c10d8d0ec" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.0625 : 3.375); (5.0625 : 3.0112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBClassesDataContext/Player/Player_Participation" />
+      <nodes>
+        <classShapeMoniker Id="21a5e8bb-b5b2-4c76-94b9-cecf4e499bf4" />
+        <classShapeMoniker Id="fdd202ba-c94c-4492-b1be-ce1c10d8d0ec" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a90d3331-c077-4c6a-90ed-15f7b4ab1f22" absoluteBounds="6.75, 4.5, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DBClassesDataContext/Game" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5f26110f-c2ce-44d4-b0c2-2c040463d278" absoluteBounds="6.7650000000000006, 4.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.59375 : 4.5); (8.59375 : 2.6050439453125); (5.875 : 2.6050439453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBClassesDataContext/Game/game_Participation" />
+      <nodes>
+        <classShapeMoniker Id="a90d3331-c077-4c6a-90ed-15f7b4ab1f22" />
+        <classShapeMoniker Id="fdd202ba-c94c-4492-b1be-ce1c10d8d0ec" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.25 : 4.37669108072917); (6.75 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBClassesDataContext/Player/Player_game" />
+      <nodes>
+        <classShapeMoniker Id="21a5e8bb-b5b2-4c76-94b9-cecf4e499bf4" />
+        <classShapeMoniker Id="a90d3331-c077-4c6a-90ed-15f7b4ab1f22" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.75 : 5.70515305338542); (1.5 : 5.70515305338542); (1.5 : 4.23240397135417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBClassesDataContext/Game/game_GameView" />
+      <nodes>
+        <classShapeMoniker Id="a90d3331-c077-4c6a-90ed-15f7b4ab1f22" />
+        <classShapeMoniker Id="a909dc0c-5d48-4b8a-9768-1311ccb49140" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
