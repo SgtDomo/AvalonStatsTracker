@@ -75,11 +75,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GameRegistration.xaml.cs">
-      <DependentUpon>GameRegistration.xaml</DependentUpon>
+    <Compile Include="GeneralGameStatsView.xaml.cs">
+      <DependentUpon>GeneralGameStatsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerStatsListView.xaml.cs">
+      <DependentUpon>PlayerStatsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerStatsView.xaml.cs">
+      <DependentUpon>PlayerStatsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QueryRestrictions.cs" />
+    <Compile Include="RestrictionsView.xaml.cs">
+      <DependentUpon>RestrictionsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UnuniqueRoleProvider.cs" />
-    <Page Include="GameRegistration.xaml">
+    <Page Include="GeneralGameStatsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,22 +101,41 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DBClasses.designer.cs">
+    <Compile Include="AvalonDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBClasses.dbml</DependentUpon>
+      <DependentUpon>AvalonDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="GameRegistrationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PlayerRoleChooser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerStatsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerStatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RestrictionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PlayerRole.cs" />
+    <Compile Include="GameRegistrationView.xaml.cs">
+      <DependentUpon>GameRegistrationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PlayerRoleChooser.xaml.cs">
       <DependentUpon>PlayerRoleChooser.xaml</DependentUpon>
     </Compile>
@@ -128,13 +157,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DBClasses.dbml">
+    <None Include="AvalonDB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DBClasses.designer.cs</LastGenOutput>
+      <LastGenOutput>AvalonDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBClasses.dbml.layout">
-      <DependentUpon>DBClasses.dbml</DependentUpon>
+    <None Include="AvalonDB.dbml.layout">
+      <DependentUpon>AvalonDB.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -148,5 +177,6 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,69 +8,31 @@
         mc:Ignorable="d"
         Title="Avalon Stats" Height="350" Width="525" SizeToContent="WidthAndHeight"
         Name="WindowRoot">
-    <!--<Window.Resources>
-        <Style x:Key="MissionButton" TargetType="Button">
-            <Setter Property="Width" Value="40"></Setter>
-            <Setter Property="MinWidth" Value="40"></Setter>
-            <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Opacity" Value="0.8" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="Auto"/>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="Auto"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Margin="5" VerticalContentAlignment="Center">End-Zeitpunkt:</Label>
-        <xctk:DateTimePicker Grid.Row="0" Grid.Column="1" Value="{Binding EndDateTime}" Margin="5" Format="Custom" FormatString="dd/MM/yyyy HH:mm" Name="DTPicker" MinWidth="150" Width="150" VerticalContentAlignment="Center" Height="30" HorizontalAlignment="Left"></xctk:DateTimePicker>
-        <Label Grid.Row="1" Grid.Column="0" Margin="5" VerticalContentAlignment="Center">Missionen:</Label>
-        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" Orientation="Horizontal" MinHeight="50">
 
-            <Button Name="Mission1Btn" Click="MissionBtnClick" MinWidth="25" Style="{StaticResource MissionButton}">1</Button>
-            <Button Name="Mission2Btn" Click="MissionBtnClick" MinWidth="25" Style="{StaticResource MissionButton}">2</Button>
-            <Button Name="Mission3Btn" Click="MissionBtnClick" MinWidth="25" Style="{StaticResource MissionButton}">3</Button>
-            <Button Name="Mission4Btn" Click="MissionBtnClick" MinWidth="25" Style="{StaticResource MissionButton}">4</Button>
-            <Button Name="Mission5Btn" Click="MissionBtnClick" MinWidth="25" Style="{StaticResource MissionButton}">5</Button>
-            <Label Margin="20 0 0 0" Foreground="{Binding MissionResultErrorColor}" VerticalContentAlignment="Center">Ungültig!</Label>
-        </StackPanel>
-        <Label Grid.Row="2" Grid.Column="0" Margin="5" VerticalContentAlignment="Center">Getötet:</Label>
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Name="KilledPlayerCb" ItemsSource="{Binding AllPlayers}" IsEnabled="False" DisplayMemberPath="PlayerName" SelectedItem="{Binding SelectedKilledPlayer}" MinWidth="150" Width="150" VerticalContentAlignment="Center" Height="30" HorizontalAlignment="Left"></ComboBox>
-        <Label Grid.Row="3" Grid.Column="0" Margin="5" VerticalContentAlignment="Center">Spieler-Anzahl:</Label>
-        <xctk:IntegerUpDown Grid.Row="3" Grid.Column="1" Value="{Binding PlayerCount}"
-                            Margin="5" Minimum="5" Maximum="10" VerticalContentAlignment="Center" Height="30" HorizontalAlignment="Left"></xctk:IntegerUpDown>
-        <ItemsControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding PlayerRoles}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <avalonStats:PlayerRoleChooser Margin="5" Players="{Binding AvailablePlayers, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" 
-                                                   Roles="{Binding AvailableRoles, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" 
-                                                   SelectedPlayer="{Binding Player, Mode=TwoWay}" SelectedRole="{Binding Role, Mode=TwoWay}"></avalonStats:PlayerRoleChooser>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <Button Grid.Row="5" Grid.Column="1" Margin="5" Height="30" Width="100" HorizontalAlignment="Right" Click="ButtonBase_OnClick">Erstellen</Button>
-    </Grid>-->
-    <avalonStats:GameRegistration></avalonStats:GameRegistration>
+        <Border Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="0,1,0,0"></Border>
+        <Grid Grid.Column="0" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <Button Name="RegisterGameBtn" Click="RegisterGameBtn_OnClick" Margin="0 3">Spiel Registieren</Button>
+                    <Button Name="PlayerStatsBtn" Click="PlayerStatsBtn_OnClick" Margin="0 3">Spieler Statistiken</Button>
+                    <Button Name="GeneralStatsBtn" Click="GeneralStatsBtn_OnClick">Allg. Statistiken</Button>
+                </StackPanel>
+            </ScrollViewer>
+            <Button Grid.Row="1" Name="RestrictionsBtn" Click="RestrictionsBtn_OnClick" Margin="0 10 0 0">Einschränkungen</Button>
+        </Grid>
+
+        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1,0,0,0"></Border>
+
+        <UserControl Grid.Column="1" Content="{Binding ContentUc}" HorizontalContentAlignment="{Binding ContentUcHorizontalAlignment}" Margin="0 10 0 0" VerticalContentAlignment="{Binding ContentUcVerticalAlignment}"></UserControl>
+    </Grid>
 </Window>
 

@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Avalon_Stats.RestrictionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Name="RestrictionsViewRoot">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Margin="5" Grid.Row="0" Grid.Column="0">Mindest Zeitpunkt:</Label>
+        <xctk:DateTimePicker Margin="5" Grid.Row="0" Grid.Column="1" Value="{Binding MinDateTime, ElementName=RestrictionsViewRoot}"/>
+        <Button Margin="5" Grid.Row="0" Grid.Column="2" Name="MinDateTimeResetBtn" Click="MinDateTimeResetBtn_OnClick">Reset</Button>
+
+        <Label Margin="5" Grid.Row="1" Grid.Column="0">Maximal Zeitpunkt:</Label>
+        <xctk:DateTimePicker Margin="5" Grid.Row="1" Grid.Column="1" Value="{Binding MaxDateTime, ElementName=RestrictionsViewRoot}"/>
+        <Button Margin="5" Grid.Row="1" Grid.Column="2" Name="MaxDateTimeResetBtn" Click="MaxDateTimeResetBtn_OnClickDateTimeResetBtn_OnClick">Reset</Button>
+
+        <Label Margin="5" Grid.Row="2" Grid.Column="0">Gruppengröße:</Label>
+        <xctk:IntegerUpDown Margin="5" Grid.Row="2" Grid.Column="1" Minimum="5" Maximum="10" Value="{Binding GroupSize, ElementName=RestrictionsViewRoot}"/>
+        <Button Margin="5" Grid.Row="2" Grid.Column="2" Name="GroupSizeResetBtn" Click="GroupSizeResetBtn_OnClick">Reset</Button>
+
+        <Label Margin="5" Grid.Row="3" Grid.Column="0">Spieler:</Label>
+        <ComboBox Margin="5" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Players, ElementName=RestrictionsViewRoot}" SelectedItem="{Binding ContainedPlayer, ElementName=RestrictionsViewRoot}" DisplayMemberPath="PlayerName"/>
+        <Button Margin="5" Grid.Row="3" Grid.Column="2" Name="ContainedPlayerResetBtn" Click="ContainedPlayerResetBtn_OnClick">Reset</Button>
+    </Grid>
+</UserControl>
