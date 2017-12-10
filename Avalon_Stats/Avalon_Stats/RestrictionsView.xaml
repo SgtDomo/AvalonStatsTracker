@@ -12,6 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -34,5 +35,9 @@
         <Label Margin="5" Grid.Row="3" Grid.Column="0">Spieler:</Label>
         <ComboBox Margin="5" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Players, ElementName=RestrictionsViewRoot}" SelectedItem="{Binding ContainedPlayer, ElementName=RestrictionsViewRoot}" DisplayMemberPath="PlayerName"/>
         <Button Margin="5" Grid.Row="3" Grid.Column="2" Name="ContainedPlayerResetBtn" Click="ContainedPlayerResetBtn_OnClick">Reset</Button>
+
+        <Label Margin="5" Grid.Row="4" Grid.Column="0">Rolle:</Label>
+        <ComboBox Margin="5" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Roles, ElementName=RestrictionsViewRoot}" SelectedItem="{Binding ContainedRole, ElementName=RestrictionsViewRoot}" DisplayMemberPath="FullName"/>
+        <Button Margin="5" Grid.Row="4" Grid.Column="2" Name="ContainedRoleResetBtn" Click="ContainedRoleResetBtn_OnClick">Reset</Button>
     </Grid>
 </UserControl>

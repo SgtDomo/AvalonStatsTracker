@@ -7,7 +7,7 @@
         xmlns:avalonStats="clr-namespace:Avalon_Stats"
         mc:Ignorable="d"
         Title="Avalon Stats" Height="350" Width="525" SizeToContent="WidthAndHeight"
-        Name="WindowRoot">
+        Name="WindowRoot" Icon="avalon_icon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -24,7 +24,7 @@
                 <StackPanel>
                     <Button Name="RegisterGameBtn" Click="RegisterGameBtn_OnClick" Margin="0 3">Spiel Registieren</Button>
                     <Button Name="PlayerStatsBtn" Click="PlayerStatsBtn_OnClick" Margin="0 3">Spieler Statistiken</Button>
-                    <Button Name="GeneralStatsBtn" Click="GeneralStatsBtn_OnClick">Allg. Statistiken</Button>
+                    <Button Name="GeneralStatsBtn" Click="GeneralStatsBtn_OnClick" Margin="0 3">Allg. Statistiken</Button>
                 </StackPanel>
             </ScrollViewer>
             <Button Grid.Row="1" Name="RestrictionsBtn" Click="RestrictionsBtn_OnClick" Margin="0 10 0 0">Einschränkungen</Button>

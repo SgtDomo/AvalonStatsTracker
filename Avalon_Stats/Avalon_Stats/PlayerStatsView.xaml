@@ -23,7 +23,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="16" FontWeight="Bold" >
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="10 0 0 0" FontSize="16" FontWeight="Bold" >
             <TextBlock.Text>
                 <MultiBinding StringFormat="{}{0} {1}" Mode="OneWay">
                     <Binding Path="Player.FirstName" ElementName="PlayerStatsViewRoot"></Binding>
@@ -40,10 +40,10 @@
         <Label Grid.Row="1" Grid.Column="5" Content="{Binding EvilGamesCount, ElementName=PlayerStatsViewRoot}" HorizontalContentAlignment="Left"></Label>
 
         <Label Grid.Row="2" Grid.Column="0">Allg. Winrate:</Label>
-        <Label Grid.Row="2" Grid.Column="1" Content="{Binding GeneralWr, ElementName=PlayerStatsViewRoot}" HorizontalContentAlignment="Left"></Label>
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding GeneralWr, ElementName=PlayerStatsViewRoot}" ContentStringFormat="{}{0:0.00}%" HorizontalContentAlignment="Left"></Label>
         <Label Grid.Row="2" Grid.Column="2">Gute Winrate:</Label>
-        <Label Grid.Row="2" Grid.Column="3" Content="{Binding GoodWr, ElementName=PlayerStatsViewRoot}" HorizontalContentAlignment="Left"></Label>
+        <Label Grid.Row="2" Grid.Column="3" Content="{Binding GoodWr, ElementName=PlayerStatsViewRoot}" ContentStringFormat="{}{0:0.00}%" HorizontalContentAlignment="Left"></Label>
         <Label Grid.Row="2" Grid.Column="4">Böse Winrate:</Label>
-        <Label Grid.Row="2" Grid.Column="5" Content="{Binding EvilWr, ElementName=PlayerStatsViewRoot}" HorizontalContentAlignment="Left"></Label>
+        <Label Grid.Row="2" Grid.Column="5" Content="{Binding EvilWr, ElementName=PlayerStatsViewRoot}" ContentStringFormat="{}{0:0.00}%" HorizontalContentAlignment="Left"></Label>
     </Grid>
 </UserControl>

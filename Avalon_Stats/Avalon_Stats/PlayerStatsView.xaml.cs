@@ -22,6 +22,7 @@ namespace Avalon_Stats
             {
                 return;
             }
+            AvalonDbDataContextProvider.RefreshObject(psv.Player);
             foreach (PropertyInfo propertyInfo in d.GetType().GetProperties())
             {
                 psv.OnPropertyChanged(propertyInfo.Name);
@@ -36,53 +37,17 @@ namespace Avalon_Stats
             set => SetValue(PlayerProperty, value);
         }
 
-        public int GamesCount => Player == null ? -1 : QueryRestrictions.FilterParticipations(Player.Participations).Count();
+        public int GamesCount => Player?.PlayedGamesCount() ?? -1;
 
-        public int GoodGamesCount => Player == null ? -1 : QueryRestrictions.FilterParticipations(Player.Participations).Count(x => x.GameRole.Side);
+        public int GoodGamesCount => Player?.GoodGamesCount() ?? -1;
 
-        public int EvilGamesCount => Player == null ? -1 : QueryRestrictions.FilterParticipations(Player.Participations).Count(x => !x.GameRole.Side);
+        public int EvilGamesCount => Player?.EvilGamesCount() ?? -1;
 
-        public double GeneralWr
-        {
-            get
-            {
-                if (Player == null)
-                {
-                    return -1;
-                }
-                double wonGamesCount = QueryRestrictions.FilterParticipations(Player.Participations).Count(x => x.GameView.WonBy == x.GameRole.Side);
-                double winrate = Math.Round(wonGamesCount / GamesCount * 100, 2);
-                return double.IsNaN(winrate) ? 0 : winrate;
-            }
-        }
+        public double GeneralWr => Player?.GeneralWr() ?? -1;
 
-        public double GoodWr
-        {
-            get
-            {
-                if (Player == null)
-                {
-                    return -1;
-                }
-                double wonGamesCount = QueryRestrictions.FilterParticipations(Player.Participations).Count(x => x.GameRole.Side && x.GameView.WonBy.Value);
-                double winrate = Math.Round(wonGamesCount / GoodGamesCount * 100, 2);
-                return double.IsNaN(winrate) ? 0 : winrate;
-            }
-        }
+        public double GoodWr => Player?.GoodWr() ?? -1;
 
-        public double EvilWr
-        {
-            get
-            {
-                if (Player == null)
-                {
-                    return -1;
-                }
-                double wonGamesCount = QueryRestrictions.FilterParticipations(Player.Participations).Count(x => !x.GameRole.Side && !x.GameView.WonBy.Value);
-                double winrate = Math.Round(wonGamesCount / EvilGamesCount * 100, 2);
-                return double.IsNaN(winrate) ? 0 : winrate;
-            }
-        }
+        public double EvilWr => Player?.EvilWr() ?? -1;
 
         public PlayerStatsView()
         {

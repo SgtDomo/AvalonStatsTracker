@@ -36,11 +36,20 @@ namespace Avalon_Stats
             set => QueryRestrictions.ContainedPlayer = value;
         }
 
+        public GameRole ContainedRole
+        {
+            get => QueryRestrictions.ContainedRole;
+            set => QueryRestrictions.ContainedRole = value;
+        }
+
         public Player[] Players { get; }
+        public GameRole[] Roles { get; }
 
         public RestrictionsView()
         {
-            Players = new AvalonDBDataContext().Players.ToArray();
+            AvalonDBDataContext dbcontext = AvalonDbDataContextProvider.DbContextInstance;
+            Players = dbcontext.Players.OrderBy(x => x.PlayerName).ToArray();
+            Roles = dbcontext.GameRoles.OrderBy(x => x.FullName).ToArray();
             InitializeComponent();
         }
 
@@ -68,6 +77,12 @@ namespace Avalon_Stats
             OnPropertyChanged(nameof(ContainedPlayer));
         }
 
+        private void ContainedRoleResetBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            QueryRestrictions.ResetContainedRole();
+            OnPropertyChanged(nameof(ContainedRole));
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -75,6 +90,5 @@ namespace Avalon_Stats
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }

@@ -75,9 +75,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AvalonDBDataContextProvider.cs" />
     <Compile Include="GeneralGameStatsView.xaml.cs">
       <DependentUpon>GeneralGameStatsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="PlayerStatsListView.xaml.cs">
       <DependentUpon>PlayerStatsListView.xaml</DependentUpon>
     </Compile>
@@ -177,6 +179,8 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="avalon_icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

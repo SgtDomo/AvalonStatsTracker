@@ -13,24 +13,28 @@ namespace Avalon_Stats
         public static DateTime MaxDateTime { get; set; }
         public static int? GroupSize { get; set; }
         public static Player ContainedPlayer { get; set; }
+        public static GameRole ContainedRole { get; set; }
 
-        private static DateTime DefaultMinDateTime { get; }
-        private static DateTime DefaultMaxDateTime { get; }
+        private static DateTime DefaultMinDateTime { get; set; }
+        private static DateTime DefaultMaxDateTime { get; set; }
         private static int? DefaultGroupSize { get; }
         private static Player DefaultContainedPlayer { get; }
+        private static GameRole DefaultContainedRole { get; }
 
         static QueryRestrictions()
         {
-            AvalonDBDataContext dbcontext = new AvalonDBDataContext();
+            AvalonDBDataContext dbcontext = AvalonDbDataContextProvider.DbContextInstance;
             DefaultMinDateTime = dbcontext.Games.Select(x => x.GameTime).Min();
             DefaultMaxDateTime = dbcontext.Games.Select(x => x.GameTime).Max();
             DefaultGroupSize = null;
             DefaultContainedPlayer = null;
+            DefaultContainedRole = null;
 
             ResetMinDateTime();
             ResetMaxDateTime();
             ResetGroupSize();
             ResetContainedPlayer();
+            ResetContainedRole();
         }
 
         public static void ResetMinDateTime()
@@ -53,20 +57,40 @@ namespace Avalon_Stats
             ContainedPlayer = DefaultContainedPlayer;
         }
 
+        public static void ResetContainedRole()
+        {
+            ContainedRole = DefaultContainedRole;
+        }
+
         public static IEnumerable<Participation> FilterParticipations(IEnumerable<Participation> baseSet)
         {
             return baseSet.Where(x => x.Game.GameTime >= MinDateTime
-                                      && x.Game.GameTime <= MaxDateTime
-                                      && (GroupSize == null || x.GameView.GroupSize == GroupSize)
-                                      && (ContainedPlayer == null || x.GameView.Participations.Select(y => y.PlayerName)
-                                          .Contains(ContainedPlayer.PlayerName)));
+                                   && x.Game.GameTime <= MaxDateTime
+                                   && (GroupSize == null || x.GameView.GroupSize == GroupSize)
+                                   && (ContainedPlayer == null || x.GameView.Participations.Select(y => y.PlayerName)
+                                        .Contains(ContainedPlayer.PlayerName))
+                                   && (ContainedRole == null || x.GameView.Participations.Select(y => y.RoleShortcut)
+                                        .Contains(ContainedRole.RoleShortcut)));
         }
 
         public static IEnumerable<GameView> FilterGameViews(IEnumerable<GameView> baseSet)
         {
             return baseSet.Where(x => x.GameTime >= MinDateTime
-                                      && x.GameTime <= MaxDateTime
-                                      && (GroupSize == null || x.GroupSize == GroupSize));
+                                   && x.GameTime <= MaxDateTime
+                                   && (GroupSize == null || x.GroupSize == GroupSize)
+                                   && (ContainedPlayer == null || x.Participations.Select(y => y.PlayerName)
+                                        .Contains(ContainedPlayer.PlayerName))
+                                   && (ContainedRole == null || x.Participations.Select(y => y.RoleShortcut)
+                                        .Contains(ContainedRole.RoleShortcut)));
+        }
+
+        public static void RefreshDateTimeRestricitons()
+        {
+            AvalonDBDataContext dbcontext = AvalonDbDataContextProvider.DbContextInstance;
+            DefaultMinDateTime = dbcontext.Games.Select(x => x.GameTime).Min().Date;
+            DefaultMaxDateTime = dbcontext.Games.Select(x => x.GameTime).Max().Date;
+            ResetMinDateTime();
+            ResetMaxDateTime();
         }
     }
 }

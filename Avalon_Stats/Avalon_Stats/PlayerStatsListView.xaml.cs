@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,7 +13,7 @@ namespace Avalon_Stats
     /// </summary>
     public partial class PlayerStatsListView : INotifyPropertyChanged
     {
-        public string[] PlayerNames => _dbContext.Players.Select(x => x.PlayerName).OrderBy(x => x).ToArray();
+        public string[] PlayerNames => DbContext.Players.Select(x => x.PlayerName).OrderBy(x => x).ToArray();
 
         private string _playerNameInput;
 
@@ -38,11 +39,13 @@ namespace Avalon_Stats
             }
         }
 
-        private readonly AvalonDBDataContext _dbContext = new AvalonDBDataContext();
+        public List<Player> AllPlayers { get; } = DbContext.Players.ToList();
+
+        private static readonly AvalonDBDataContext DbContext = AvalonDbDataContextProvider.DbContextInstance;
 
         public PlayerStatsListView()
         {
-            SelectedPlayers = new ObservableCollection<Player>(_dbContext.Players.ToList());
+            SelectedPlayers = new ObservableCollection<Player>(DbContext.Players.ToList());
             InitializeComponent();
             DataContext = this;
             PlayerNameInput = "";
@@ -51,7 +54,7 @@ namespace Avalon_Stats
         private void FilterPlayerForPlayerName(object sender, RoutedEventArgs e)
         {
             SelectedPlayers.Clear();
-            foreach (Player player in _dbContext.Players)
+            foreach (Player player in DbContext.Players)
             {
                 if ((player.FirstName + " " + player.PlayerName).ToLower().Contains(PlayerNameInput.ToLower()))
                 {

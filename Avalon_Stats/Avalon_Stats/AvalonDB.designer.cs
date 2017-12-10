@@ -819,9 +819,9 @@ namespace Avalon_Stats
 		
 		private System.DateTime _gameTime;
 		
-		private System.Nullable<bool> _WonBy;
+		private bool _WonBy;
 		
-		private System.Nullable<int> _GroupSize;
+		private int _GroupSize;
 		
 		private bool _firstMissionResult;
 		
@@ -847,9 +847,9 @@ namespace Avalon_Stats
     partial void OnGameIdChanged();
     partial void OnGameTimeChanging(System.DateTime value);
     partial void OnGameTimeChanged();
-    partial void OnWonByChanging(System.Nullable<bool> value);
+    partial void OnWonByChanging(bool value);
     partial void OnWonByChanged();
-    partial void OnGroupSizeChanging(System.Nullable<int> value);
+    partial void OnGroupSizeChanging(int value);
     partial void OnGroupSizeChanged();
     partial void OnFirstMissionResultChanging(bool value);
     partial void OnFirstMissionResultChanged();
@@ -913,7 +913,7 @@ namespace Avalon_Stats
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WonBy", DbType="Bit")]
-		public System.Nullable<bool> WonBy
+		public bool WonBy
 		{
 			get
 			{
@@ -933,7 +933,7 @@ namespace Avalon_Stats
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupSize", DbType="Int")]
-		public System.Nullable<int> GroupSize
+		public int GroupSize
 		{
 			get
 			{

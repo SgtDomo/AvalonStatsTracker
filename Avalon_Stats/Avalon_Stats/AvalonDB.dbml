@@ -16,7 +16,7 @@
       <Association Name="GameRole_Participation" Member="GameRole" ThisKey="RoleShortcut" OtherKey="RoleShortcut" Type="GameRole" IsForeignKey="true" />
       <Association Name="Game_Participation" Member="Game" Storage="_game" ThisKey="GameId" OtherKey="GameId" Type="Game" IsForeignKey="true" />
       <Association Name="GameView_Participation" Member="GameView" Storage="_gameView" ThisKey="GameId" OtherKey="GameId" Type="GameView" IsForeignKey="true" />
-      <Association Name="player_Participation" Member="Player" ThisKey="PlayerName" OtherKey="PlayerName" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Participation" Member="Player" ThisKey="PlayerName" OtherKey="PlayerName" Type="Player" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.game" Member="Games">
@@ -30,15 +30,15 @@
       <Column Name="fithMissionResult" Member="FithMissionResult" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="killedPlayer" Member="KilledPlayer" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
       <Association Name="Game_Participation" Member="Participations" ThisKey="GameId" OtherKey="GameId" Type="Participation" />
-      <Association Name="player_Game" Member="Player" ThisKey="KilledPlayer" OtherKey="PlayerName" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Game" Member="Player" ThisKey="KilledPlayer" OtherKey="PlayerName" Type="Player" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.gameView" Member="GameViews">
     <Type Name="GameView">
       <Column Name="gameId" Member="GameId" Storage="_gameId" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="gameTime" Member="GameTime" Storage="_gameTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="WonBy" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="GroupSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WonBy" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
+      <Column Name="GroupSize" Type="System.Int32" DbType="Int" CanBeNull="false" />
       <Column Name="firstMissionResult" Member="FirstMissionResult" Storage="_firstMissionResult" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="secondMissionResult" Member="SecondMissionResult" Storage="_secondMissionResult" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="thirdMissionResult" Member="ThirdMissionResult" Storage="_thirdMissionResult" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -53,8 +53,8 @@
     <Type Name="Player">
       <Column Name="playerName" Member="PlayerName" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="firstName" Member="FirstName" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
-      <Association Name="player_Participation" Member="Participations" ThisKey="PlayerName" OtherKey="PlayerName" Type="Participation" />
-      <Association Name="player_Game" Member="Games" ThisKey="PlayerName" OtherKey="KilledPlayer" Type="Game" />
+      <Association Name="Player_Participation" Member="Participations" ThisKey="PlayerName" OtherKey="PlayerName" Type="Participation" />
+      <Association Name="Player_Game" Member="Games" ThisKey="PlayerName" OtherKey="KilledPlayer" Type="Game" />
       <Association Name="Player_GameView" Member="GameViews" ThisKey="PlayerName" OtherKey="KilledPlayer" Type="GameView" />
     </Type>
   </Table>

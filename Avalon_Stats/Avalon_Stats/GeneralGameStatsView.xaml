@@ -8,14 +8,28 @@
              d:DesignHeight="300" d:DesignWidth="300" Name="GeneralGameStatsViewRoot">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0">Anzahl Spiele Insg.:</Label>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding GamesCount,ElementName=GeneralGameStatsViewRoot, Mode=OneWay}" IsEnabled="False"></TextBox>
+        
+        <Label Grid.Row="0" Grid.Column="0">Anzahl Spiele</Label>
+        <Label Grid.Row="0" Grid.Column="1" Content="{Binding GamesCount,ElementName=GeneralGameStatsViewRoot, Mode=OneWay}" />
+        
+        <Label Grid.Row="1" Grid.Column="0">Gut-Gewonnene Spiele:</Label>
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding GoodWonGamesCount, ElementName=GeneralGameStatsViewRoot, Mode=OneWay}"/>
+        <Label Grid.Row="1" Grid.Column="2">Gute Wr:</Label>
+        <Label Grid.Row="1" Grid.Column="3" Content="{Binding GoodWr, ElementName=GeneralGameStatsViewRoot, Mode=OneWay}" ContentStringFormat="{}{0:0.00}%"/>
+
+        <Label Grid.Row="2" Grid.Column="0">Böse-Gewonnene Spiele:</Label>
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding EvilWonGamesCount, ElementName=GeneralGameStatsViewRoot, Mode=OneWay}"/>
+        <Label Grid.Row="3" Grid.Column="2">Böse Wr:</Label>
+        <Label Grid.Row="4" Grid.Column="3" Content="{Binding EvilWr, ElementName=GeneralGameStatsViewRoot, Mode=OneWay}" ContentStringFormat="{}{0:0.00}%"/>
     </Grid>
 </UserControl>

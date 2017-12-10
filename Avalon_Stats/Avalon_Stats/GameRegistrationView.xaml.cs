@@ -133,7 +133,7 @@ namespace Avalon_Stats
             }
         }
 
-        private readonly AvalonDBDataContext _dbcontext = new AvalonDBDataContext();
+        private readonly AvalonDBDataContext _dbcontext = AvalonDbDataContextProvider.DbContextInstance;
 
         private readonly Dictionary<Button, MissionResult> _missionBtns = new Dictionary<Button, MissionResult>();
 
@@ -339,6 +339,7 @@ namespace Avalon_Stats
             }
             _dbcontext.Games.InsertOnSubmit(newGame);
             _dbcontext.SubmitChanges();
+            QueryRestrictions.RefreshDateTimeRestricitons();
             MessageBox.Show("Spiel erfolgreich registriert!", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             ResetEverything();
         }

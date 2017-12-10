@@ -23,17 +23,6 @@ namespace Avalon_Stats.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=avalon_stats;Persist Security Info=True;Use" +
-            "r ID=sa;Password=admin")]
-        public string avalon_statsConnectionString {
-            get {
-                return ((string)(this["avalon_statsConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("GenB;GenR;Ober")]
@@ -51,6 +40,17 @@ namespace Avalon_Stats.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=avalon_stats;Persist Security Info=True;Use" +
             "r ID=sa;Password=admin")]
+        public string avalon_statsConnectionString {
+            get {
+                return ((string)(this["avalon_statsConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=avalon_stats_test;Persist Security Info=Tru" +
+            "e;User ID=sa;Password=admin")]
         public string avalon_statsConnectionString1 {
             get {
                 return ((string)(this["avalon_statsConnectionString1"]));

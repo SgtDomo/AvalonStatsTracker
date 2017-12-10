@@ -23,9 +23,18 @@ namespace Avalon_Stats
     /// </summary>
     public partial class GeneralGameStats : INotifyPropertyChanged
     {
-        private static AvalonDBDataContext _dbcontext = new AvalonDBDataContext();
+        private static readonly AvalonDBDataContext Dbcontext = AvalonDbDataContextProvider.DbContextInstance;
 
-        public int GamesCount => _dbcontext.Games.Count();
+        public int GamesCount => Dbcontext.GetFilteredGameViews().Count();
+
+        public int GoodWonGamesCount => Dbcontext.GetFilteredGameViews().Count(x => x.WonBy);
+
+        public double GoodWr => (double) GoodWonGamesCount / GamesCount * 100;
+
+        public int EvilWonGamesCount => Dbcontext.GetFilteredGameViews().Count(x => !x.WonBy);
+
+        public double EvilWr => (double) EvilWonGamesCount / GamesCount * 100;
+
 
         public GeneralGameStats()
         {
