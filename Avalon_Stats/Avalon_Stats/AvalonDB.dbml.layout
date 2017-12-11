@@ -47,13 +47,13 @@
         <classShapeMoniker Id="fdd202ba-c94c-4492-b1be-ce1c10d8d0ec" />
       </nodes>
     </associationConnector>
-    <classShape Id="c14ac083-e8d3-4279-819c-ee519765669f" absoluteBounds="4, 3.625, 2, 1.1939925130208333">
+    <classShape Id="c14ac083-e8d3-4279-819c-ee519765669f" absoluteBounds="4, 3.625, 2, 1.1939925130208327">
       <DataClassMoniker Name="/AvalonDBDataContext/Player" />
       <nestedChildShapes>
         <elementListCompartment Id="1b812a7b-26c1-4e3c-bbeb-d15e1b5ef7dd" absoluteBounds="4.015, 4.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4 : 4.05370198567708); (2.5 : 4.05370198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4 : 4.05370198567708); (2.5 : 4.05370198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/AvalonDBDataContext/Player/Player_GameView" />
       <nodes>
         <classShapeMoniker Id="c14ac083-e8d3-4279-819c-ee519765669f" />
